@@ -22,20 +22,20 @@ Seguimos una **Arquitectura Limpia (Clean Architecture)** adaptada al frontend c
 
 ```mermaid
 graph TD
-    User[Usuario] --> View[App Router (src/app)]
-    
-    subgraph "src / Capas de la Aplicación"
-        View --> Modules[Módulos / Features]
-        View --> Shared[Shared Framework]
-        
-        Modules --> Components[Componentes de Módulo]
-        Modules --> Hooks[Hooks Específicos]
-        
-        Shared --> UI[UI Kit (Atomos)]
-        Shared --> Layout[Layout Global]
-        Shared --> Core[Core Logic / Utils]
+    User["Usuario"] --> View["App Router (src/app)"]
+
+    subgraph AppLayers["src - Capas de la Aplicacion"]
+        View --> Modules["Modulos / Features"]
+        View --> Shared["Shared Framework"]
+
+        Modules --> Components["Componentes de Modulo"]
+        Modules --> Hooks["Hooks Especificos"]
+
+        Shared --> UI["UI Kit (Atomos)"]
+        Shared --> Layout["Layout Global"]
+        Shared --> Core["Core Logic / Utils"]
     end
-    
+
     style User fill:#bf8f3b,color:#000
     style View fill:#1e1a14,stroke:#bf8f3b,color:#fff
     style Modules fill:#2e281e,stroke:#fff,color:#fff

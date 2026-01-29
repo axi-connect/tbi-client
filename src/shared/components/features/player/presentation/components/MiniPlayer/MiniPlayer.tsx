@@ -59,7 +59,7 @@ export const MiniPlayer: React.FC = memo(() => {
                             {/* Album Art Large */}
                             <div className="relative aspect-square w-full max-w-[200px] mx-auto overflow-hidden rounded-xl">
                                 <div
-                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
+                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""
                                         }`}
                                     style={{ backgroundImage: `url('${currentTrack.albumArt}')` }}
                                 />
@@ -108,7 +108,7 @@ export const MiniPlayer: React.FC = memo(() => {
                             {/* Album Art with Animation */}
                             <div className="relative size-12 shrink-0 overflow-hidden rounded-lg">
                                 <div
-                                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 ${isPlaying ? "animate-[spin_4s_linear_infinite]" : ""
+                                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""
                                         }`}
                                     style={{ backgroundImage: `url('${currentTrack.albumArt}')` }}
                                 />
@@ -170,7 +170,7 @@ export const MiniPlayer: React.FC = memo(() => {
                             {/* Album Art */}
                             <div className="relative aspect-square w-full max-w-[180px] mx-auto overflow-hidden rounded-2xl">
                                 <div
-                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
+                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""
                                         }`}
                                     style={{ backgroundImage: `url('${currentTrack.albumArt}')` }}
                                 />
@@ -207,7 +207,7 @@ export const MiniPlayer: React.FC = memo(() => {
                         <div className="flex items-center gap-3">
                             <div className="relative size-8 shrink-0 overflow-hidden rounded-full">
                                 <div
-                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[spin_3s_linear_infinite]" : ""
+                                    className={`absolute inset-0 bg-cover bg-center ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""
                                         }`}
                                     style={{ backgroundImage: `url('${currentTrack.albumArt}')` }}
                                 />

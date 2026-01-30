@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-
 export type MediaType = "image" | "video";
+import { useState, useEffect, useRef } from "react";
 
 export interface BackgroundMedia {
     id: string;
@@ -55,15 +54,7 @@ const DEFAULT_MEDIA: BackgroundMedia[] = [
         src: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769655779/show-tbi_1_brqckh.jpg",
         alt: "Bosa - TBI (the brothers inc)",
         duration: 8000
-    },
-    // Ejemplo de cómo se vería un video (usando la misma imagen como placeholder por ahora si no hay video real disponible)
-    // {
-    //   id: "2",
-    //   type: "video",
-    //   src: "/assets/studio-loop.mp4", 
-    //   poster: "...",
-    //   duration: 15000
-    // }
+    }
 ];
 
 export const DynamicBackground = ({ initialMedia = DEFAULT_MEDIA }: DynamicBackgroundProps) => {
@@ -97,7 +88,7 @@ export const DynamicBackground = ({ initialMedia = DEFAULT_MEDIA }: DynamicBackg
                 return (
                     <div
                         key={item.id}
-                        className={`absolute inset-0 w-full h-full transition-opacity duration-[2000ms] ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-2000 ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 z-0"
                             }`}
                     >
                         {item.type === "video" ? (

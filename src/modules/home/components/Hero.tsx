@@ -4,12 +4,12 @@ export const Hero = () => {
     return (
         <main className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full pt-20 pb-32 px-4">
             {/* Animated Central Logo Section */}
-            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 animate-[breathe_8s_ease-in-out_infinite]">
+            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 animate-breathe">
                 {/* Large Monogram SVG Representation */}
                 <div className="relative size-32 md:size-48 lg:size-56 group">
                     {/* Decorative Circle */}
                     <svg
-                        className="absolute inset-0 w-full h-full text-primary/20 animate-[spin_12s_linear_infinite]"
+                        className="absolute inset-0 w-full h-full text-primary/20 animate-spin-slow"
                         viewBox="0 0 100 100"
                     >
                         <path
@@ -37,7 +37,7 @@ export const Hero = () => {
                     {/* <h2 className="text-white font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight drop-shadow-2xl">
                         THE BROTHERS INC
                     </h2> */}
-                    <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto my-4"></div>
+                    <div className="h-px w-24 bg-linear-to-r from-transparent via-primary/50 to-transparent mx-auto my-4"></div>
                     <p className="text-white/80 text-sm md:text-base font-light tracking-[0.2em] uppercase font-display">
                         Estudio &nbsp;•&nbsp; Producción &nbsp;•&nbsp; Cultura
                     </p>

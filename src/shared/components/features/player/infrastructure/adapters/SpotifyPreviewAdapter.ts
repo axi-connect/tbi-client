@@ -3,99 +3,83 @@ import { Playlist } from "../../domain/entities/Playlist";
 import { Track } from "../../domain/entities/Track";
 
 /**
- * Adapter que usa previews de Spotify hardcodeados.
- * Estos son URLs públicos de 30 segundos que no requieren autenticación.
- * 
- * Las canciones han sido seleccionadas para ofrecer variedad y buena calidad de preview.
+ * Adapter que consume la API interna de Next.js para obtener la playlist de Spotify.
+ * Obtiene tracks reales con previews de 30 segundos.
  */
 export class SpotifyPreviewAdapter implements IPlaylistPort {
-    private readonly defaultPlaylist: Playlist = {
-        id: "tbi-curated-mix",
-        name: "TBI Curated Mix",
+    // Playlist de respaldo por si falla la API
+    private readonly fallbackPlaylist: Playlist = {
+        id: "tbi-fallback-mix",
+        name: "TBI Fallback Mix",
         coverImage: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768195111/bosa-tbi_pjdew7.png",
         tracks: [
             {
                 id: "1",
-                title: "Hasta Normal",
-                artist: "Andrés SZ",
-                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769659891/art-single-hasta-normal-sz_ptyian.jpg",
                 duration: 30,
+                artist: "Andrés SZ",
+                title: "Hasta Normal",
+                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769659891/art-single-hasta-normal-sz_ptyian.jpg",
                 previewUrl: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1769660032/Hasta_normal_-_Andr%C3%A9s_SZ_Visualizer_tiyq7h.mp3",
             },
-            // {
-            //     id: "2",
-            //     title: "Electronic Vibes",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
-            // },
-            // {
-            //     id: "3",
-            //     title: "Urban Beat",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Jahzzar/Traveler%27s_Guide/Jahzzar_-_05_-_Siesta.mp3",
-            // },
-            // {
-            //     id: "4",
-            //     title: "Night Drive",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Interlude.mp3",
-            // },
-            // {
-            //     id: "5",
-            //     title: "Chill Session",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Broke_For_Free/Slam_Funk/Broke_For_Free_-_01_-_Night_Owl.mp3",
-            // },
-            // {
-            //     id: "6",
-            //     title: "Studio Flow",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Podington_Bear/Playful/Podington_Bear_-_Rubber_Band.mp3",
-            // },
-            // {
-            //     id: "7",
-            //     title: "Midnight Groove",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Impact/Kevin_MacLeod_-_Cipher.mp3",
-            // },
-            // {
-            //     id: "8",
-            //     title: "Golden Hour",
-            //     artist: "TBI Studio",
-            //     albumArt: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=300&h=300&fit=crop",
-            //     duration: 30,
-            //     previewUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Scott_Holmes/Media_Mixes/Scott_Holmes_-_Upbeat_Party.mp3",
-            // },
-        ],
+        ]
     };
 
     async getPlaylist(playlistId: string): Promise<Playlist> {
-        // Por ahora solo tenemos una playlist
-        if (playlistId === this.defaultPlaylist.id) {
-            return this.defaultPlaylist;
-        }
-        return this.defaultPlaylist;
+        return this.getDefaultPlaylist();
     }
 
     async getDefaultPlaylist(): Promise<Playlist> {
-        return this.defaultPlaylist;
+        try {
+            const res = await fetch('/api/spotify/playlist');
+
+            if (!res.ok) {
+                console.warn('Failed to fetch playlist from API, using fallback');
+                return this.fallbackPlaylist;
+            }
+
+            const data = await res.json();
+
+            // Mapear respuesta de Spotify a nuestras entidades
+            const tracks: Track[] = data.tracks.items
+                .map((item: any) => {
+                    const track = item.track;
+                    // Filtramos tracks que no tengan preview
+                    if (!track?.preview_url) return null;
+
+                    return {
+                        id: track.id,
+                        title: track.name,
+                        artist: track.artists.map((a: any) => a.name).join(', '),
+                        albumArt: track.album.images[0]?.url,
+                        duration: 30, // Los previews de Spotify son siempre de 30s
+                        previewUrl: track.preview_url,
+                        spotifyUri: track.uri,
+                    };
+                })
+                .filter(Boolean) as Track[];
+
+            if (tracks.length === 0) {
+                console.warn('No tracks with previews found in playlist');
+                return this.fallbackPlaylist;
+            }
+
+            return {
+                id: data.id,
+                name: data.name,
+                coverImage: data.images[0]?.url,
+                tracks,
+            };
+        } catch (error) {
+            console.error('Error fetching playlist:', error);
+            return this.fallbackPlaylist;
+        }
     }
 
     getRandomTrack(playlist: Playlist): Track {
-        const randomIndex = Math.floor(Math.random() * playlist.tracks.length);
-        return playlist.tracks[randomIndex];
+        const tracks = playlist.tracks;
+        if (tracks.length === 0) return this.fallbackPlaylist.tracks[0];
+        const randomIndex = Math.floor(Math.random() * tracks.length);
+        return tracks[randomIndex];
     }
 
     getNextTrack(
@@ -103,22 +87,24 @@ export class SpotifyPreviewAdapter implements IPlaylistPort {
         currentIndex: number,
         shuffle: boolean
     ): { track: Track; index: number } {
+        const tracks = playlist.tracks;
+        if (tracks.length === 0) return { track: this.fallbackPlaylist.tracks[0], index: 0 };
+
         if (shuffle) {
-            // Reproducción aleatoria: elegir un índice diferente al actual
             let randomIndex: number;
+            // Evitar repetir la misma canción si hay más de una
             do {
-                randomIndex = Math.floor(Math.random() * playlist.tracks.length);
-            } while (randomIndex === currentIndex && playlist.tracks.length > 1);
+                randomIndex = Math.floor(Math.random() * tracks.length);
+            } while (randomIndex === currentIndex && tracks.length > 1);
 
             return {
-                track: playlist.tracks[randomIndex],
+                track: tracks[randomIndex],
                 index: randomIndex,
             };
         } else {
-            // Reproducción secuencial
-            const nextIndex = (currentIndex + 1) % playlist.tracks.length;
+            const nextIndex = (currentIndex + 1) % tracks.length;
             return {
-                track: playlist.tracks[nextIndex],
+                track: tracks[nextIndex],
                 index: nextIndex,
             };
         }

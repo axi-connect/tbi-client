@@ -36,6 +36,7 @@ export const Navbar = () => {
                 <nav className="hidden md:flex items-center gap-10">
                     {[
                         { label: "Inicio", href: "/" },
+                        { label: "Nosotros", href: "/about" },
                         { label: "Estudio", href: "/merch" },
                         { label: "Artistas", href: "/artists" },
                         { label: "Contacto", href: "#" }

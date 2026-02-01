@@ -1,13 +1,13 @@
 "use client";
 
 import React, { memo } from "react";
-import { ArrowsPointingOutIcon, ArrowsPointingInIcon } from "@heroicons/react/24/outline";
-import { usePlayer } from "../../context/PlayerContext";
 import { TrackInfo } from "./TrackInfo";
-import { PlayerControls } from "./PlayerControls";
 import { ProgressBar } from "./ProgressBar";
 import { VolumeSlider } from "./VolumeSlider";
+import { PlayerControls } from "./PlayerControls";
 import { AudioVisualizer } from "./AudioVisualizer";
+import { usePlayer } from "../../context/PlayerContext";
+import { ArrowsPointingOutIcon, ArrowsPointingInIcon } from "@heroicons/react/24/outline";
 
 export const MiniPlayer: React.FC = memo(() => {
     const {
@@ -25,9 +25,7 @@ export const MiniPlayer: React.FC = memo(() => {
 
     const { currentTrack, isPlaying, isLoading, isExpanded, shuffleEnabled, volume, isMuted, progress, currentTime, duration } = state;
 
-    if (!currentTrack) {
-        return null;
-    }
+    if (!currentTrack) return null;
 
     return (
         <>

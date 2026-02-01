@@ -34,6 +34,13 @@ const DEFAULT_MEDIA: BackgroundMedia[] = [
         alt: "La Ene - TBI (the brothers inc)",
         duration: 8000
     },
+    {
+        id: "3",
+        type: "video",
+        src: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1769655024/bosa-tbi-videclip_xfslgt.mp4",
+        alt: "Bosa - TBI (the brothers inc)",
+        duration: 8000
+    },
     // {
     //     id: "3",
     //     type: "image",
@@ -42,29 +49,24 @@ const DEFAULT_MEDIA: BackgroundMedia[] = [
     //     duration: 8000
     // },
     {
-        id: "4",
+        id: "5",
         type: "image",
         src: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768200171/photo-large_8_xo2cs6.jpg",
         alt: "TEAM - TBI (the brothers inc)",
         duration: 8000
     },
     {
-        id: "5",
+        id: "6",
         type: "image",
         src: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769655779/show-tbi_1_brqckh.jpg",
         alt: "Bosa - TBI (the brothers inc)",
         duration: 8000
-    }
+    },
 ];
 
 export const DynamicBackground = ({ initialMedia = DEFAULT_MEDIA }: DynamicBackgroundProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [loaded, setLoaded] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        setLoaded(true);
-    }, []);
 
     useEffect(() => {
         const currentItem = initialMedia[currentIndex];

@@ -30,13 +30,14 @@ export class SpotifyPreviewAdapter implements IPlaylistPort {
 
     async getDefaultPlaylist(): Promise<Playlist> {
         try {
-            const res = await fetch('/api/spotify/playlist');
+            // const res = await fetch('/api/spotify/playlist');
 
-            if (!res.ok) {
-                console.warn('Failed to fetch playlist from API, using fallback');
+            // if (!res.ok) {
+                // console.warn('Failed to fetch playlist from API, using fallback');
                 return this.fallbackPlaylist;
-            }
+            // }
 
+            /*
             const data = await res.json();
 
             // Mapear respuesta de Spotify a nuestras entidades
@@ -68,7 +69,7 @@ export class SpotifyPreviewAdapter implements IPlaylistPort {
                 name: data.name,
                 coverImage: data.images[0]?.url,
                 tracks,
-            };
+            };*/
         } catch (error) {
             console.error('Error fetching playlist:', error);
             return this.fallbackPlaylist;

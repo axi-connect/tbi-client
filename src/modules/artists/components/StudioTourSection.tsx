@@ -1,17 +1,59 @@
 "use client";
-import React from "react";
-import { PlayIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import React, { useState, useEffect } from "react";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { motion, AnimatePresence } from "framer-motion";
+
+const STUDIO_IMAGES_DESKTOP = [
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613159/DSC05571.jpg_xqyemg.jpg",
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613298/DSC05559.jpg_g9jloh.jpg",
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613295/DSC05558.jpg_lioq0r.jpg",
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613173/DSC05564.jpg_ev5qhd.jpg",
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613183/DSC05572.jpg_y7jwld.jpg"
+];
+
+const STUDIO_IMAGES_MOBILE = [
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613304/DSC05577.jpg_btmnmf.jpg",
+    "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773613307/DSC05581.jpg_smbyqx.jpg",
+];
 
 export const StudioTourSection = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Responsive detection
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    const images = isMobile ? STUDIO_IMAGES_MOBILE : STUDIO_IMAGES_DESKTOP;
+
+    // Auto-slide every 5 seconds
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [images.length]);
+
     return (
         <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-black z-0">
-            {/* Background Image */}
-            <div
-                className="absolute inset-0 bg-cover bg-center opacity-60 scale-105"
-                style={{
-                    backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDg2s-60NLLsJM1LzvI44mIRKV_n1kWuxHVsZZLam4KE587AVfDq0LdvUJfOs8IHRVDSQxzMElYs-Za78UgFztecnwoe3v9IVU8Km_1PSULEqORAD-Dc7XYVLNZP3UyfiGXohMSyrwJYmbqrstscVU6cHSCeDNidRV0_y-CE6kyCoDgcDJZWdONnBEuWBj4QHRgi9dsZQxwm5bzxLUZKvn3uH7IrfupjPWpodRFZobeTwd9n1wH6AmRanp8TsP8eHzkBxTgmX8fvOU")`
-                }}
-            />
+            {/* Background Image Carousel */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={images[currentIndex]}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 0.6, scale: 1.05 }}
+                    exit={{ opacity: 0, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage: `url("${images[currentIndex]}")`
+                    }}
+                />
+            </AnimatePresence>
 
             {/* Vintage Grain Overlay */}
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/76/Noise_pattern_with_subtle_grain.png')]" />
@@ -22,13 +64,6 @@ export const StudioTourSection = () => {
 
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center p-4 gap-8 max-w-4xl mx-auto">
-                {/* Play Button */}
-                <button className="group relative flex items-center justify-center size-24 md:size-32 rounded-full border border-primary/30 bg-[#1e1a14]/30 backdrop-blur-sm transition-all duration-500 hover:scale-110 hover:border-primary hover:bg-primary/10 cursor-pointer">
-                    <PlayIcon className="size-12 md:size-14 text-white group-hover:text-primary transition-colors ml-1" />
-                    {/* Ripple Effect */}
-                    <span className="absolute inset-0 rounded-full border border-white/10 animate-ping opacity-20" />
-                </button>
-
                 <div className="space-y-4">
                     <h2 className="text-primary text-sm md:text-base font-bold tracking-[0.3em] uppercase animate-pulse">
                         Bogotá, Colombia

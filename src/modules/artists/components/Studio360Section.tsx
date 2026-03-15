@@ -15,8 +15,9 @@
  * - `ssr: false` (importación dinámica) evita errores de hidratación.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import { PlayIcon } from "@heroicons/react/24/solid";
 import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 // ─── Tipos internos ─── //
 interface PsvViewer {
@@ -135,63 +136,43 @@ const ExperienceOverlay = ({ onDismiss }: ExperienceOverlayProps) => (
         className="absolute inset-0 z-20 flex flex-col items-center justify-center cursor-pointer bg-black/75 backdrop-blur-sm"
         onClick={onDismiss}
     >
-        {/* Ícono 360 animado */}
-        <motion.div
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="mb-6 size-20 md:size-24"
-        >
-            <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-                <circle
-                    cx="50" cy="50" r="44"
-                    stroke="rgba(191,143,59,0.6)"
-                    strokeWidth="1.5"
-                    strokeDasharray="8 4"
-                />
-                <circle cx="50" cy="50" r="36" stroke="rgba(191,143,59,0.2)" strokeWidth="0.8" />
-                <text
-                    x="50%" y="55%"
-                    dominantBaseline="middle"
-                    textAnchor="middle"
-                    fill="white"
-                    fontSize="20"
-                    fontWeight="bold"
-                    fontFamily="sans-serif"
-                    letterSpacing="1"
-                >
-                    360°
-                </text>
-            </svg>
-        </motion.div>
+        {/* Play Button */}
+        <button className="group flex items-center justify-center size-24 md:size-32 rounded-full border border-primary/30 bg-[#1e1a14]/30 backdrop-blur-sm transition-all duration-500 hover:scale-110 hover:border-primary hover:bg-primary/10 cursor-pointer">
+            <PlayIcon className="size-12 md:size-14 text-white group-hover:text-primary transition-colors ml-1" />
+            {/* Ripple Effect */}
+            <span className="absolute inset-0 rounded-full border border-white/10 animate-ping opacity-20" />
+        </button>
 
-        <motion.h2
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white text-center drop-shadow-2xl mb-3"
-        >
-            Sumérgete en <span className="text-primary">TBI</span>
-        </motion.h2>
+        <div className="mt-24 flex flex-col items-center justify-center">
+            <motion.h2
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white text-center drop-shadow-2xl mb-3"
+            >
+                Sumérgete en <span className="text-primary">TBI</span>
+            </motion.h2>
 
-        <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-white/60 text-sm md:text-base tracking-widest uppercase mb-8"
-        >
-            Arrastra para explorar el estudio
-        </motion.p>
+            <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-white/60 text-sm md:text-base tracking-widest uppercase mb-8"
+            >
+                Arrastra para explorar el estudio
+            </motion.p>
 
-        <motion.button
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-8 py-3 border border-primary/60 bg-primary/10 text-primary text-sm font-bold uppercase tracking-widest rounded-md backdrop-blur-sm hover:bg-primary/20 transition-colors duration-300"
-        >
-            Entrar al estudio
-        </motion.button>
+            <motion.button
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="px-8 py-3 border border-primary/60 bg-primary/10 text-primary text-sm font-bold uppercase tracking-widest rounded-md backdrop-blur-sm hover:bg-primary/20 transition-colors duration-300"
+            >
+                Entrar al estudio
+            </motion.button>
+        </div>
     </motion.div>
 );
 

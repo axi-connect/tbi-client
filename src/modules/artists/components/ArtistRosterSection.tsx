@@ -56,7 +56,7 @@ const ARTISTS = [
 
 export const ArtistRosterSection = () => {
     return (
-        <section className="py-16 lg:py-24 px-4 lg:px-20 relative z-10">
+        <section className="py-16 px-4 lg:px-20 relative z-10">
             <div className="max-w-[1400px] mx-auto flex flex-col gap-4">
                 {/* Headline */}
                 <div className="flex flex-col items-center justify-center text-center gap-2">
@@ -67,7 +67,7 @@ export const ArtistRosterSection = () => {
                 </div>
 
                 {/* Carousel */}
-                <div className="w-full overflow-x-auto no-scrollbar pb-10 pt-4">
+                <div className="w-screen overflow-x-auto no-scrollbar pb-10 pt-4">
                     <div className="flex gap-6 min-w-max px-4 md:justify-center p-12">
                         {ARTISTS.map((artist) => (
                             <ArtistCard key={artist.id} {...artist} />

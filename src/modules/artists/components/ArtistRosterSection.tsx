@@ -4,39 +4,60 @@ import { ArtistCard } from "./ArtistCard";
 
 const ARTISTS = [
     {
+        id: 7,
+        name: "DIMELOJEI",
+        genre: "Productor Ejecutivo",
+        image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768365884/photo_dimelojei_sw2hjo.jpg",
+        alt: "Silhouette of artist Carlos V against a sunset urban background"
+    },
+    {
         id: 1,
-        name: "Andrés SZ",
-        genre: "Rap, Trap | Urbano",
+        name: "SZ",
+        genre: "Drill, Rap, Trap | Urbano",
         image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768365486/photo_andresSZ_smyqqv.jpg",
         alt: "Moody editorial portrait of artist Andrés SZ in dark streetwear lighting"
     },
     {
         id: 2,
-        name: "La Ene",
-        genre: "Trap, R&B | Urbano",
+        name: "LA ENE",
+        genre: "Trap, Reggaetón | Urbano",
         image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768365483/photo_la-ene_bhtrxf.jpg",
         alt: "High contrast black and white portrait of female artist La Ene with microphone"
     },
     {
         id: 3,
-        name: "Trillerboi",
-        genre: "Trap, Afro | Urbano",
+        name: "TILLER BOI",
+        genre: "R&B | Urbano",
         image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768365481/photo_trillerboi_vbc5lk.jpg",
-        alt: "Stylized portrait of producer Trillerboi in studio with neon lighting"
+        alt: "Stylized portrait of producer Tiller Boi in studio with neon lighting"
     },
     {
         id: 4,
-        name: "Dimelojei",
+        name: "Lugo NLM",
+        genre: "Trap | Urbano",
+        image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773531509/lugo_sx6jsa.jpg",
+        alt: ""
+    },
+    {
+        id: 5,
+        name: "CORTUX",
         genre: "Productor Ejecutivo",
-        image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768365884/photo_dimelojei_sw2hjo.jpg",
-        alt: "Silhouette of artist Carlos V against a sunset urban background"
+        image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773531626/cortux_diyww4.jpg",
+        alt: ""
+    },
+    {
+        id: 6,
+        name: "LYRICKO",
+        genre: "Productor Ejecutivo",
+        image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773531827/lyricko_s2avpo.jpg",
+        alt: ""
     }
 ];
 
 export const ArtistRosterSection = () => {
     return (
         <section className="py-16 lg:py-24 px-4 lg:px-20 relative z-10">
-            <div className="max-w-[1400px] mx-auto flex flex-col gap-10">
+            <div className="max-w-[1400px] mx-auto flex flex-col gap-4">
                 {/* Headline */}
                 <div className="flex flex-col items-center justify-center text-center gap-2">
                     <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">The Brothers Inc</span>
@@ -47,7 +68,7 @@ export const ArtistRosterSection = () => {
 
                 {/* Carousel */}
                 <div className="w-full overflow-x-auto no-scrollbar pb-10 pt-4">
-                    <div className="flex gap-6 min-w-max px-4 md:justify-center p-24">
+                    <div className="flex gap-6 min-w-max px-4 md:justify-center p-12">
                         {ARTISTS.map((artist) => (
                             <ArtistCard key={artist.id} {...artist} />
                         ))}

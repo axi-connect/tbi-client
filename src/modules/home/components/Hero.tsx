@@ -39,7 +39,7 @@ export const Hero = () => {
                     </h2> */}
                     <div className="h-px w-24 bg-linear-to-r from-transparent via-primary/50 to-transparent mx-auto my-4"></div>
                     <p className="text-white/80 text-sm md:text-base font-light tracking-[0.2em] uppercase font-display">
-                        Estudio &nbsp;•&nbsp; Producción &nbsp;•&nbsp; Cultura
+                        MÚSICA &nbsp;•&nbsp; CULTURA &nbsp;•&nbsp; BROTHERHOOD
                     </p>
                 </div>
 

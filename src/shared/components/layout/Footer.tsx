@@ -77,7 +77,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="border-t border-[#41392a] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-[#bfb29c]/50 text-xs">© 2024 The Brothers Inc. Todos los derechos reservados.</p>
+                    <p className="text-[#bfb29c]/50 text-xs">© 2026 The Brothers Inc. Todos los derechos reservados.</p>
                     <div className="flex gap-6">
                         <a className="text-[#bfb29c]/50 hover:text-white text-xs transition-colors" href="#">Política de Privacidad</a>
                         <a className="text-[#bfb29c]/50 hover:text-white text-xs transition-colors" href="#">Términos de Servicio</a>

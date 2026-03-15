@@ -5,7 +5,7 @@ export const DISCOGRAPHY_CONTENT: Album[] = [
   {
     id: "1",
     title: "La Vida Cambia",
-    artist: "Andrés SZ",
+    artist: "SZ",
     release_date: "2026",
     cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769898805/la-vida-cambia-_andres_sz_fqyao5.jpg",
     spotify_url: "https://open.spotify.com/intl-es/track/7fiprgGpA8FJ57sgLC6S2V?si=09891cedc2e24a8b",
@@ -13,7 +13,7 @@ export const DISCOGRAPHY_CONTENT: Album[] = [
   },
   {
     id: "2",
-    title: "ESTA KABRON",
+    title: "ESTA KBRON",
     artist: "La ENE, Cortux",
     release_date: "2026",
     cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769899231/esta-kabron-_la-ene.jpg_cvzuur.jpg",
@@ -23,7 +23,7 @@ export const DISCOGRAPHY_CONTENT: Album[] = [
   {
     id: "3",
     title: "Molly con Heny",
-    artist: "Trillerboi",
+    artist: "Tiller Boi, La ENE, SZ",
     release_date: "2026",
     cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769902848/molly-con_heny-_tbi_rpfxyj.jpg",
     spotify_url: "https://open.spotify.com/intl-es/track/5Q2Iq8pwUxJavKQL1Qj5Z5?si=6f7ca77cfbaf4d5a",
@@ -42,13 +42,13 @@ export const DISCOGRAPHY_CONTENT: Album[] = [
     title: "Bandido",
     artist: "Lugo NLM",
     release_date: "2026",
-    cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769899231/esta-kabron-_la-ene.jpg_cvzuur.jpg",
+    cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773529693/PORTADA_BANDIDO_itwmi9.jpg",
     spotify_url: "https://open.spotify.com/intl-es/album/2jNC3UR71PMgLi9hmtGUEP?si=_Mmqk57bRxqggAQ1r5qgaQ",
     tracks: []
   },
   {
     id: "5",
-    title: "DE ROSE TABOGO",
+    title: "DE ROSE POR TABOGO",
     artist: "The Brothers Inc",
     release_date: "2026",
     cover_image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769902979/D.R.P.T-_tbi_yuaxoz.jpg",

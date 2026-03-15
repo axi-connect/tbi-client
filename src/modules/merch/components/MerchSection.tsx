@@ -6,16 +6,16 @@ import { ProductCard } from "./ProductCard";
 const PRODUCTS = [
     {
         id: 1,
-        name: "SOUL MEETING 555",
-        price: "$80.00 USD",
+        name: "CAMISETA SOUL 555",
+        price: "$27.00 USD",
         image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768198324/item-tbiculture-video_1_exfo9l.gif",
-        badge: "NUEVO LOTE",
+        badge: "AGOTADO",
         alt: "Oversized luxury urban hoodie in black with gold embroidery detail"
     },
     {
         id: 2,
-        name: "HOODIE FOCUS PHASE 222",
-        price: "$45.00 USD",
+        name: "HOODIE FOCUS 222",
+        price: "$48.00 USD",
         image: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1768198386/item-tbiculture-video_2_qgpsx2.gif",
         badge: null,
         alt: "Vintage style faded black cap with minimalistic logo"

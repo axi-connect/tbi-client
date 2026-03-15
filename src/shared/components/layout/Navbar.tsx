@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -18,7 +19,7 @@ export const Navbar = () => {
     const navItems = [
         { label: "Inicio", href: "/" },
         { label: "Nosotros", href: "/about" },
-        { label: "Estudio", href: "/merch" },
+        { label: "Tienda", href: "/merch" },
         { label: "Artistas", href: "/artists" },
         { label: "Contacto", href: "#" }
     ];
@@ -44,14 +45,14 @@ export const Navbar = () => {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-10">
                     {navItems.map((item) => (
-                        <a
+                        <Link
                             key={item.label}
                             href={item.href}
                             className="text-white/80 text-sm font-medium tracking-widest hover:text-primary transition-colors uppercase relative group"
                         >
                             {item.label}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
-                        </a>
+                        </Link>
                     ))}
                 </nav>
 
@@ -76,14 +77,14 @@ export const Navbar = () => {
             >
                 <nav className="flex flex-col items-center justify-center h-full gap-8">
                     {navItems.map((item) => (
-                        <a
+                        <Link
                             key={item.label}
                             href={item.href}
                             onClick={() => setIsOpen(false)}
                             className="text-white text-2xl font-serif font-bold tracking-widest hover:text-primary transition-colors uppercase"
                         >
                             {item.label}
-                        </a>
+                        </Link>
                     ))}
                 </nav>
             </div>

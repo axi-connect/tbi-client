@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@photo-sphere-viewer/core": "^5.14.1",
+    "@photo-sphere-viewer/equirectangular-video-adapter": "^5.14.1",
+    "@photo-sphere-viewer/video-plugin": "^5.14.1",
     "framer-motion": "^12.29.2",
     "material-symbols": "^0.40.2",
     "next": "16.1.1",

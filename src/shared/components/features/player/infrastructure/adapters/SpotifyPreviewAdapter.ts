@@ -16,11 +16,27 @@ export class SpotifyPreviewAdapter implements IPlaylistPort {
             {
                 id: "1",
                 duration: 30,
-                artist: "Andrés SZ",
-                title: "Hasta Normal",
-                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1769659891/art-single-hasta-normal-sz_ptyian.jpg",
-                previewUrl: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1769660032/Hasta_normal_-_Andr%C3%A9s_SZ_Visualizer_tiyq7h.mp3",
+                artist: "Tiller Boi, La Ene, SZ, Lugo NLM",
+                title: "HEATERZ",
+                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773520106/album_default_zbmmaj.jpg",
+                previewUrl: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1773520021/DETROIT_TILLERXENEXLUGOXSZ.mp3_c3fyzi.mp3",
             },
+            {
+                id: "2",
+                duration: 30,
+                artist: "SZ, Tiller Boi, Tatan",
+                title: "PIRIBO TAN POPO (coming soon)",
+                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773520106/album_default_zbmmaj.jpg",
+                previewUrl: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1773520188/16-08-25_PIRO_TAN_BO_SZ_X_TBI_REFE1.mp3_meue4m.mp3",
+            },
+            {
+                id: "2",
+                duration: 30,
+                artist: "Tiller Boi, La Ene, Tatan",
+                title: "CHARLITA (coming soon)",
+                albumArt: "https://res.cloudinary.com/dvtz1qx7g/image/upload/v1773520106/album_default_zbmmaj.jpg",
+                previewUrl: "https://res.cloudinary.com/dvtz1qx7g/video/upload/v1773520252/CHARLITA-TATAN-LA-ENE-TILLERREFV3_rqmmrf.mp3",
+            }
         ]
     };
 
@@ -33,8 +49,8 @@ export class SpotifyPreviewAdapter implements IPlaylistPort {
             // const res = await fetch('/api/spotify/playlist');
 
             // if (!res.ok) {
-                // console.warn('Failed to fetch playlist from API, using fallback');
-                return this.fallbackPlaylist;
+            // console.warn('Failed to fetch playlist from API, using fallback');
+            return this.fallbackPlaylist;
             // }
 
             /*

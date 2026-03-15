@@ -32,8 +32,7 @@ export const MiniPlayer: React.FC = memo(() => {
             {/* Desktop Widget */}
             <div className="fixed bottom-6 right-6 z-50 w-full max-w-[340px] hidden sm:block">
                 <div
-                    className={`relative overflow-hidden rounded-2xl bg-[#1f1b14]/90 border border-[#41392a] backdrop-blur-xl shadow-2xl shadow-black/50 group hover:border-primary/30 transition-all duration-300 ${isExpanded ? "p-5" : "p-4"
-                        }`}
+                    className={`relative overflow-hidden rounded-2xl bg-[#1f1b14]/90 border border-[#41392a] backdrop-blur-xl shadow-2xl shadow-black/50 group hover:border-primary/30 transition-all duration-300 ${isExpanded ? "p-5" : "p-4"}`}
                 >
                     {/* Glass reflection effect */}
                     <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
@@ -41,7 +40,7 @@ export const MiniPlayer: React.FC = memo(() => {
                     {/* Expand/Collapse button */}
                     <button
                         onClick={toggleExpanded}
-                        className="absolute top-3 right-3 z-20 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/40 hover:text-white/60 transition-colors"
+                        className="absolute top-6 left-7 z-20 p-1.5 rounded-lg bg-white/20 hover:bg-white/10 text-white/60 hover:text-white/60 transition-colors"
                         aria-label={isExpanded ? "Collapse" : "Expand"}
                     >
                         {isExpanded ? (
@@ -106,8 +105,7 @@ export const MiniPlayer: React.FC = memo(() => {
                             {/* Album Art with Animation */}
                             <div className="relative size-12 shrink-0 overflow-hidden rounded-lg">
                                 <div
-                                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""
-                                        }`}
+                                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 ${isPlaying ? "animate-[pulse_3s_linear_infinite]" : ""}`}
                                     style={{ backgroundImage: `url('${currentTrack.albumArt}')` }}
                                 />
                             </div>
